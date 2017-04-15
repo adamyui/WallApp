@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="81px" viewBox="0 0 34 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M26,19.8870968 L4.99854806,19.8870968 C2.23083496,19.8870968 0,22.1261769 0,24.8882221 L0,75.9988746 C0,78.7524814 2.2379262,81 4.99854806,81 L29.0014519,81 C31.769165,81 34,78.7609199 34,75.9988746 L34,24.8882221 C34,22.995344 32.9424834,21.3416145 31.3846162,20.4927101 L31.3846154,2.7010977 C31.3846154,1.2047913 30.1792282,0 28.6923077,0 C27.2084128,0 26,1.20932263 26,2.7010977 L26,19.8870968 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="34" height="81" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="3.1875" y="24" width="27.625" height="52"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="27.625" height="52" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="0" y="0" width="24" height="25"></rect>
+        <path d="M3.12936331,17.390411 C2.54510479,16.1620113 2.20826781,14.7934027 2.18331177,13.3493151 L21.8166908,13.3493151 C21.7917712,14.7937999 21.4553334,16.1623012 20.871681,17.390411 L3.12936331,17.390411 Z M4.39672551,19.390411 C6.19722056,21.5930488 8.93454878,23 12,23 C15.0669155,23 17.8047764,21.5936301 19.6050484,19.390411 L4.39672551,19.390411 Z M2.19305998,11.3493145 C2.26202862,9.89742963 2.64592493,8.52809483 3.27794812,7.30821918 L20.7208923,7.30821918 C21.3535288,8.52837661 21.7378567,9.89782058 21.806921,11.3493151 L2.19305249,11.3493151 Z M4.65144643,5.30821918 C6.44991015,3.27893314 9.07533624,2 12,2 C14.9232321,2 17.5480809,3.27943083 19.3466883,5.30821918 L4.65144643,5.30821918 Z" id="path-6"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7">
+            <g id="Group-6" stroke-width="2">
+                <use id="Combined-Shape" stroke="#D3CFC8" mask="url(#mask-2)" fill="#423C3C" xlink:href="#path-1"></use>
+                <use id="Rectangle-9" stroke="#979797" mask="url(#mask-4)" xlink:href="#path-3"></use>
+            </g>
+            <g id="Group-5" transform="translate(5.000000, 28.000000)">
+                <g id="Group-4">
+                    <g id="Rectangle-3">
+                        <use fill="#6EF95A" fill-rule="evenodd" xlink:href="#path-5"></use>
+                        <use stroke="#979797" stroke-width="1" xlink:href="#path-5"></use>
+                    </g>
+                </g>
+                <use id="Combined-Shape" fill="#423C3C" xlink:href="#path-6"></use>
+            </g>
+        </g>
+    </g>
+</svg>

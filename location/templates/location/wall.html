@@ -1,0 +1,35 @@
+{% extends "location/header.html" %}
+{% block content %}
+
+
+<div class='col-sm-8 col-sm-offset-2'>
+	<p id= 'walltext'>This is the {{ title }}. Here you can listen to sounds. The default location is set to Athens, GA. To use your location, click <button class="btn btn-success" onclick="getLocation()">here</button></p>
+
+{% for obj in object_listboy %}	
+<div class='row'>
+	<div class='col-sm-12'>
+		<div class='thumbnail'>
+		
+			<div class='caption'>
+				<audio controls>
+					<source src="{{obj.sound.url}}" type="audio/wav">
+  					<source src="{{obj.sound.url}}" type="audio/ogg">
+  					<source src="{{obj.sound.url}}" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+				<p style="font-size: 9px">title:{{ obj.title }}</p>
+				<!-- <h3><a href='{{ obj.get_absolute_url}}'>{{obj.title}}</a> </h3> -->
+				<!-- <p><a href="{{ obj.get_absolute_url}}" class='btn btn-primary' role='button'>View</a></p> -->
+				
+			
+			</div>
+			
+		</div>
+		
+	</div>
+<hr/>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

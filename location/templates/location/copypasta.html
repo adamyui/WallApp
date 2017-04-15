@@ -1,0 +1,55 @@
+<div class='col-sm-8 col-sm-offset-2'>
+	<h1>{{ title }}</h1>
+
+{% for obj in object_list %}	
+<div class='row'>
+	<div class='col-sm-12'>
+		<div class='thumbnail'>
+		
+			<div class='caption'>
+				<audio controls>
+					<source src="{{obj.sound.url}}" type="audio/wav">
+  					<source src="{{obj.sound.url}}" type="audio/ogg">
+  					<source src="{{obj.sound.url}}" type="audio/mpeg">
+					Your browser does not support the audio element.
+				</audio>
+				<h3><a href='{{ obj.get_absolute_url}}'>{{obj.title}}</a> </h3>
+				<p>{{obj.artist|linebreaks|truncatechars:120}}</p>
+				<p><a href="{{ obj.get_absolute_url}}" class='btn btn-primary' role='button'>View</a></p>
+				
+				
+			</div>
+			
+		</div>
+		
+	</div>
+<hr/>
+</div>
+{% endfor %}
+</div>
+
+
+
+<!--NAVBAr-->
+
+<div id="myNavbar"  navbar-fixed-top role="navigation" class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="/" class="navbar-brand">wall talkie</a>
+		</div>
+		<div class="navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/">Wall</a></li>
+				<li><a href="/create">Upload</a></li>
+
+			</ul>
+		</div>
+		
+	</div>
+
+</div>

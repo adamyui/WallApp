@@ -1,0 +1,15 @@
+{% extends "location/header.html" %}
+
+{% block content %}
+<div class='col-sm-8 col-sm-offset-2'>
+<h1>Create a New Account</h1>
+
+
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+{{form.as_p}}
+<input type= 'submit' value='Create Post'/>
+</form>
+</div>
+
+
+{% endblock %}

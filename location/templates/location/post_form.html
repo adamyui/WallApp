@@ -1,0 +1,58 @@
+{% extends "location/header.html" %}
+
+{% block content %}
+
+
+
+
+
+
+
+<div class= 'border'>
+
+
+<div class= 'center_div'>
+<div class="row vertical-center-row">
+
+
+
+       
+
+
+
+<!--  grab location -->
+
+
+
+<!-- <h1>Talk!</h1> -->
+<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+
+<button class="btn btn-success" onclick="getLocation()">click to get coordinates</button></br></br>
+
+<p id='update'></p>
+
+<p>long & lat:</p>
+
+
+
+<input id= 'longitude' name= 'longitude' type= 'number' step='any'></br>
+<input id= 'latitude' name= 'latitude' type= 'number' step='any'></br></br>
+<p>title:</p>
+{{form.title}}</br></br>
+<p>upload:</p>
+{{form.sound}}</br>
+
+<input class="btn btn-success" type= 'submit' value='Create Post'/>
+
+</form>
+
+<!-- </div> -->
+</div>
+</div>
+</div>
+
+
+<!-- 
+</div> -->
+
+{% endblock %}
