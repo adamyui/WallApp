@@ -4,6 +4,7 @@ from django.contrib.gis.db import models
 from django.core.urlresolvers import reverse
 from django.contrib.gis.geos import Point
 
+
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -12,11 +13,11 @@ from django.dispatch import receiver
 
 
 class Places(models.Model):
-	# # user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 	title= models.CharField(max_length=100)
-	latitude= models.FloatField(null= True, blank=True)
-	longitude= models.FloatField(null= True, blank=True) 
-	location = models.PointField(null= True, srid=4326)
+	latitude= models.FloatField(null= True, blank=True,)
+	longitude= models.FloatField(null= True, blank=True,) 
+	location = models.PointField(null= True, srid=4326,default= Point(27,-38))
 	objects = models.GeoManager()
 	sound= models.FileField()
 	prefered_radius = models.IntegerField(default=5, help_text="in kilometers")

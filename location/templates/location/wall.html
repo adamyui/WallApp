@@ -2,9 +2,41 @@
 {% block content %}
 
 
-<div class='col-sm-8 col-sm-offset-2'>
-	<p id= 'walltext'>This is the {{ title }}. Here you can listen to sounds. The default location is set to Athens, GA. To use your location, click <button class="btn btn-success" onclick="getLocation()">here</button></p>
+<!--location script-->
+<script type="text/javascript">
+var x= document.getElementById('nope')
+function getLocationWall() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPositionWall);
 
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPositionWall(position) {
+
+    document.getElementById('lonload').value = position.coords.longitude;
+    document.getElementById('latload').value = position.coords.latitude;
+
+
+}
+getLocationWall()
+</script>
+
+<!--start page with location form-->
+<div class='col-sm-8 col-sm-offset-2'>
+<form method= 'get' action="/foo/">{% csrf_token %}
+
+	<p id= 'walltext'>Here you can listen to the sounds in your area. The default location is set to Athens, GA. To use your location instead, click</p>
+		<input  id='latload'  type= 'number' step='any' value='0' name='latitude' style="display:none">
+		<input  id='lonload'  type= 'number' step='any' value='0' name='longitude' style="display:none">
+	
+		<input  class="btn btn-success" type='submit' value='here' style="color:#34373a; font-size: 25px; width: 100%" />
+</form></br></br>
+
+<p id= 'nope'></p>
+
+<!--list wall objects-->
 {% for obj in object_listboy %}	
 <div class='row'>
 	<div class='col-sm-12'>
@@ -18,18 +50,18 @@
 					Your browser does not support the audio element.
 				</audio>
 				<p style="font-size: 9px">title:{{ obj.title }}</p>
-				<!-- <h3><a href='{{ obj.get_absolute_url}}'>{{obj.title}}</a> </h3> -->
-				<!-- <p><a href="{{ obj.get_absolute_url}}" class='btn btn-primary' role='button'>View</a></p> -->
-				
-			
+						
 			</div>
 			
 		</div>
 		
 	</div>
-<hr/>
+<!-- <hr/ style='border-color: #92969b'> -->
 </div>
 {% endfor %}
 </div>
+
+
+
 
 {% endblock %}

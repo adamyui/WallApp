@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'location',
     'django.contrib.gis',
     'rest_framework',
+    'audiotools',
+
 ]
 
 MIDDLEWARE = [
