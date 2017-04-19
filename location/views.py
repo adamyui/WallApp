@@ -12,7 +12,7 @@ from django.contrib.gis.geos import Point
 from .models import Places
 from .forms import PostForm
 
-import audiotools
+# import audiotools
 
 
 #CRUD

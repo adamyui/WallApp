@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'location',
     'django.contrib.gis',
-    'rest_framework',
-    'audiotools',
+    # 'rest_framework',
+    # 'audiotools',
 
 ]
 
