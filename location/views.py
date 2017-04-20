@@ -20,8 +20,8 @@ from .forms import PostForm
 def post_create(request):
 	form= PostForm(request.POST or None, request.FILES or None)
 
+
 	if form.is_valid():
-		# clean_audio('sound')
 		
 		instance = form.save(commit=False)
 		instance.save()
@@ -32,7 +32,7 @@ def post_create(request):
 	context= {
 		'form': form,
 	}
-	return render(request, 'location/post_form.html',context)
+	return render(request, 'location/post_form.html',context,)
 
 def post_detail(request,id):
 	instance= get_object_or_404(Places, id=id)

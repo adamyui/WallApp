@@ -4,6 +4,8 @@
 
 <!--location script-->
 <script type="text/javascript">
+
+getLocationWall()
 var x= document.getElementById('nope')
 function getLocationWall() {
     if (navigator.geolocation) {
@@ -20,18 +22,32 @@ function showPositionWall(position) {
 
 
 }
-getLocationWall()
+
+
+
+
+function enable()
+{
+var x = document.getElementById("submit");
+
+x.removeAttribute("disabled");
+}
+
+setTimeout("enable()", 2000);
+
+
 </script>
 
 <!--start page with location form-->
-<div class='col-sm-8 col-sm-offset-2'>
+<div class='col-sm-8 col-sm-offset-2' onload="enable()">
 <form method= 'get' action="/foo/">{% csrf_token %}
-
-	<p id= 'walltext'>Here you can listen to the sounds in your area. The default location is set to Athens, GA. To use your location instead, click</p>
 		<input  id='latload'  type= 'number' step='any' value='0' name='latitude' style="display:none">
 		<input  id='lonload'  type= 'number' step='any' value='0' name='longitude' style="display:none">
+
+	<p id= 'walltext'>Here you can listen to the sounds in your area. The default location is set to Athens, GA. To use your location instead, click</p>
+
 	
-		<input  class="btn btn-success" type='submit' value='here' style="color:#34373a; font-size: 25px; width: 100%" />
+		<input  class="btn btn-success" type='submit' id='submit' value='here' style="color:#34373a; font-size: 25px; width: 100%;" disabled />
 </form></br></br>
 
 <p id= 'nope'></p>
