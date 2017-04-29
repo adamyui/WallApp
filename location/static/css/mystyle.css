@@ -91,9 +91,15 @@
       100%{color:#a0ffce;}
     }
 @-webkit-keyframes colorchangelist {
-      0% {background-color:#a0ffce;}
-      50% {background-color:#303338;}
-      100%{background-color:#5ee6ff;}
+      0% {background-color:#2a2c30;}
+
+
+      30%{background-color:#2a2c30;}
+      50%{background-color: #a0ffce;}
+      75%{background-color: #5ee6ff;}
+      
+
+      100%{background-color:#2a2c30;}
     }
 
 /*NAV*/
@@ -157,7 +163,7 @@ h1,h2,h3{
   letter-spacing: 10px;
 }
 p{
-  color: #a0ffce;
+  color: #ffe5ec;
 }
 svg{
   text-shadow: none;
@@ -195,7 +201,7 @@ audio{
   text-align: center;
   padding-bottom: 3%;
 
-  color:#a0ffce;
+  /*color:#ffe5ec;*/
   font-size: 12px;
   -webkit-animation:colorchange 20s infinite alternate;
 }
@@ -204,12 +210,17 @@ audio{
 
 }
 
+
+
 .btn.btn-success{
   font-family: 'Roboto',sans-serif;
   background-color:#5ee6ff;
   color: #34373a;
-  outline:none;
+  
   box-shadow: none;
+  
+  border: none;
+  
   
 }
 
@@ -229,7 +240,9 @@ audio{
 .thumbnail{
   background-color: black;
   border-color: black;
-  -webkit-animation:colorchangelist 6s infinite alternate;
+
+
+  -webkit-animation:colorchangelist 10s infinite alternate;
 }
 .vertical-center-row {
     vertical-align: middle;

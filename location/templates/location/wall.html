@@ -1,6 +1,6 @@
 {% extends "location/header.html" %}
 {% block content %}
-
+{% load ratings %}
 
 <!--location script-->
 <script type="text/javascript">
@@ -45,7 +45,7 @@ setTimeout("enable()", 2000);
 		<input  id='latload'  type= 'number' step='any' value='0' name='latitude' style="display:none">
 		<input  id='lonload'  type= 'number' step='any' value='0' name='longitude' style="display:none">
 
-	<p id= 'walltext'>Here you can listen to the sounds in your area. The default location is set to Athens, GA. To use your location instead, click</p>
+	<p id= 'walltext'>Here you can listen to the sounds in your area. To use your current location, click</p>
 
 	
 		<input  class="btn btn-success" type='submit' id='submit' value='here' style="color:#34373a; font-size: 25px; width: 100%;" disabled />
@@ -67,6 +67,7 @@ setTimeout("enable()", 2000);
 					Your browser does not support the audio element.
 				</audio>
 				<p style="font-size: 9px">title:{{ obj.title }}</p>
+				{% ratings obj 18 18 %}
 						
 			</div>
 			

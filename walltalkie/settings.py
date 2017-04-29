@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'location',
     'django.contrib.gis',
+    'star_ratings',
     # 'rest_framework',
     # 'audiotools',
 
@@ -84,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'dr0ngletr0n',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -126,6 +127,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+STAR_RATINGS_RERATE = False
+
+
 
 STATIC_URL = '/static/'
 MEDIA_URL= '/media/'

@@ -1,6 +1,31 @@
 {% extends "location/header.html" %}
 
 {% block content %}
+
+<script type="text/javascript">
+getLocation()
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+
+    document.getElementById('latitude').value = position.coords.longitude;
+    document.getElementById('longitude').value = position.coords.latitude;
+    
+}
+
+</script>
+
+
+
+
 <div class= 'border'>
 <div class= 'center_div'>
 <div class="row vertical-center-row">
@@ -88,17 +113,20 @@
 
 
 <!--  grab location button and post form-->
+
 <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
-	<button class="btn btn-success" onclick="getLocation()"  style="color:#34373a; font-size: 20px; width: 100%" >get coordinates</button></br></br>
+<!-- 	<button class="btn btn-success" onclick="getLocation()"  style="color:#34373a; font-size: 20px; width: 100%" >get coordinates</button></br></br> -->
 	<p id='update'></p>
-	<p>latitude & longitude:</p>
-	<input id= 'longitude' name= 'longitude' type= 'number' step='any'></br>
-	<input id= 'latitude' name= 'latitude' type= 'number' step='any'></br></br>
+	<!-- <p>latitude & longitude:</p> -->
+
+	<input  id='longitude'  type= 'number' step='any' value='0' name='latitude' style="display:none" required>
+	<input  id='latitude'  type= 'number' step='any' value='0' name='longitude' style="display:none" required>
+
 	<p>title:</p>
 	{{form.title}}</br></br>
 	<p>upload:</p>
 	<!-- {{form.sound}}</br></br> -->
-	<input type="file"  name="sound" accept='audio/*'></br></br>
+	<input type="file"  name="sound" accept='audio/*' required></br></br>
 	<input class="btn btn-success" type= 'submit' style="color:#34373a; font-size: 25px; width: 100%" value="post sound" />
 </form>
 
