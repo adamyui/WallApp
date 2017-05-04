@@ -16,12 +16,21 @@ import os
 
 
 class PostForm(forms.ModelForm):
-	# def clean_file(self):
-	# 	file = self.cleaned_data.get("sound", False)
-	# 	filetype = magic.from_buffer(file.read())
-	# 	if not "audio/mpeg" in filetype:
-	# 		raise ValidationError("File is not XML.")
-	# 	return file
+	def clean_sound(self):
+		file = self.cleaned_data.get('sound',False)
+
+		if file:
+			if file.size > 4*1024*1024:
+				raise ValidationError("Audio file too large ( > 4mb )")
+			if not file.content_type in ["audio/mpeg","audio/mp3",]:
+				raise ValidationError("Wrong file type, make sure to use mp3/wav")
+			if not os.path.splitext(file.name)[1] in [".mp3",]:
+				raise ValidationError("Doesn't have proper extension")
+			return file
+		else:
+			raise ValidationError("Couldn't read uploaded file")
+
+
 
 
 	class Meta:
@@ -35,6 +44,14 @@ class PostForm(forms.ModelForm):
 			'sound',
 			
 		]
+
+
+	# def clean_file(self):
+	# 	file = self.cleaned_data.get("sound", False)
+	# 	filetype = magic.from_buffer(file.read())
+	# 	if not "audio/mpeg" in filetype:
+	# 		raise ValidationError("File is not XML.")
+	# 	return file
 	# def clean_file(self):
 
 		# file = forms.FileField(

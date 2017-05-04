@@ -16,6 +16,9 @@ from .models import Places
 from .forms import PostForm
 import magic
 
+
+
+
 # import audiotools
 
 
@@ -26,7 +29,8 @@ def post_create(request):
 
 
 	if form.is_valid():
-		
+
+		# handle_uploaded_file(request.FILES['sound'])
 		instance = form.save(commit=False)
 		instance.save()
 		messages.success(request, 'Successfully Created')
