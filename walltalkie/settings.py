@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'location',
     'django.contrib.gis',
     'star_ratings',
+    'django_cleanup',
+    'constrainedfilefield',
+    'magic',
     # 'rest_framework',
     # 'audiotools',
 
@@ -156,4 +159,10 @@ DEFAULT_FROM_EMAIL = 'walltalkie'
 
 LOGIN_REDIRECT_URL = ('/')
 LOGIN_URL = ('/accounts/login')
+
+
+
+MAX_UPLOAD_SIZE = 2621440
+CONTENT_TYPES = ['video', 'audio']
+
 

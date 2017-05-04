@@ -5,11 +5,16 @@ from django.core.urlresolvers import reverse
 from django.contrib.gis.geos import Point
 
 
+
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from django.contrib.contenttypes.fields import GenericRelation
+from star_ratings.models import Rating
+from constrainedfilefield.fields import ConstrainedFileField
 
+import magic
 
 
 class Places(models.Model):
@@ -19,9 +24,10 @@ class Places(models.Model):
 	longitude= models.FloatField(null= True, blank=True,) 
 	location = models.PointField(null= True, srid=4326,default= Point(27,-38))
 	objects = models.GeoManager()
-	sound= models.FileField()
+	sound= ConstrainedFileField(max_upload_size= 4194304)
 	prefered_radius = models.IntegerField(default=5, help_text="in kilometers")
-	rating= models.IntegerField(default= 1)
+	rating= GenericRelation(Rating, related_query_name='foos')
+	usersave= models.CharField(max_length=100)
 
 
 	def __str__(self):
@@ -36,6 +42,17 @@ class Places(models.Model):
 	def get_absolute_url(self):
 		return reverse('posts:detail', kwargs={'id': self.id})
 
+	# def clean_file(self):
+	# 	file = self.cleaned_data.get("sound", False)
+	# 	filetype = magic.from_buffer(file.read())
+	# 	if not "audio/mpeg" in filetype:
+	# 		raise ValidationError("File is not XML.")
+	# 	return file
+
+
+
+
+
 
 
 	
@@ -51,39 +68,11 @@ class Places(models.Model):
 
 
 
-	# @receiver(post_save, sender=User)
-	# def create_user_profile(sender, instance, created, **kwargs):
-	# 	if created:
-	# 		Place.objects.create(user=instance)
-
-	# @receiver(post_save, sender=User)
-	# def save_user_profile(sender, instance, **kwargs):
-	# 	instance.place.save()
-
-
-# class Profile(models.Model):
-# 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-# 	latitude= models.FloatField(null= True, blank=True)
-# 	longitude= models.FloatField(null= True, blank=True) 
-# 	location = models.PointField(null= True, srid=4326)
-	
-# 	def save(self, *args, **kwargs):
-# 		if self.latitude and self.longitude:
-# 			self.location = Profile(self.longitude, self.latitude)
-		
-# 		super(Profile,self).save(*args,**kwargs)
 
 
 
 
 
-
-
-
-
-
-	# class Meta:
-	# 	ordering = []
 
 
 
@@ -102,4 +91,4 @@ class Places(models.Model):
 
 	
 
-# Create your models here.
+

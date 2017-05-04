@@ -4,6 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from star_ratings.models import Rating
+
+from django.core.exceptions import PermissionDenied
 
 from django.db.models import F
 from django.contrib.gis.measure import D
@@ -11,6 +14,7 @@ from django.contrib.gis.geos import Point
 
 from .models import Places
 from .forms import PostForm
+import magic
 
 # import audiotools
 
@@ -34,8 +38,9 @@ def post_create(request):
 	}
 	return render(request, 'location/post_form.html',context,)
 
-def post_detail(request,id):
+def post_detail(request,id= None):
 	instance= get_object_or_404(Places, id=id)
+
 	context= {
 		'title': instance.title,
 		'instance': instance,
@@ -61,10 +66,18 @@ def post_update(request,id=None):
 	}
 	return render(request, 'location/post_form.html', context)
 
-def post_delete(request, id=None):
+def post_delete(request, id=id):
+
 	instance= get_object_or_404(Places, id=id)
-	instance.delete()
-	messages.success(request, 'Success')
+	if request.user.username == instance.usersave:
+		instance.delete()
+		messages.success(request, 'Success')
+	else:
+		raise PermissionDenied()
+	# instance.delete()
+	# messages.success(request, 'Success')
+	
+	# messages.success(request, 'Success')
 	return redirect('posts:list')
 
 def fetch_places(request):
@@ -90,7 +103,7 @@ def fetch_places_loc(request):
 	nearby= Places.objects.filter(
 		location__distance_lte=(
 			finder_location,
-			D(km=40))).distance(finder_location).order_by('distance')[:10]
+			D(km=40))).distance(finder_location).order_by('distance').order_by('-rating__average')[:10]
 	context= {
 		'object_listboy': nearby,
 		'title': 'wall',

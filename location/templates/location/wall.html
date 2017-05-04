@@ -2,18 +2,18 @@
 {% block content %}
 {% load ratings %}
 
-<!--location script-->
-<script type="text/javascript">
 
+<script >
+<!--location script-->
 getLocationWall()
 
-var x= document.getElementById('nope')
+var loca= document.getElementById('nope')
 function getLocationWall() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPositionWall);
 
     } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        loca.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 function showPositionWall(position) {
@@ -25,31 +25,81 @@ function showPositionWall(position) {
 }
 
 
-
+// here button enable
 
 function enable()
 {
 var x = document.getElementById("submit");
 
+
 x.removeAttribute("disabled");
+
+
+}
+setTimeout("enable()", 1700);
+
+
+// icon animation enable/disable
+
+function disable_ani(){
+	var ye = document.getElementById('lastbolt');
+	ye.style.webkitAnimationPlayState = 'paused';
+	var y = document.getElementById('boltrow1');
+	y.style.webkitAnimationPlayState = 'paused';
+	var yaa = document.getElementById('boltrow2');
+	yaa.style.webkitAnimationPlayState = 'paused';
+	var yb = document.getElementById('boltrow3');
+	yb.style.webkitAnimationPlayState = 'paused';
+	var yc = document.getElementById('boltrow4');
+	yc.style.webkitAnimationPlayState = 'paused';
+
+
+
+
+}
+disable_ani();
+
+function enable_ani(){
+	var ea = document.getElementById('lastbolt');
+	ea.style.webkitAnimationPlayState = 'running';
+	var ya = document.getElementById('boltrow1');
+	ya.style.webkitAnimationPlayState = 'running';
+	var aa = document.getElementById('boltrow2');
+	aa.style.webkitAnimationPlayState = 'running';
+	var ba = document.getElementById('boltrow3');
+	ba.style.webkitAnimationPlayState = 'running';
+	var ca = document.getElementById('boltrow4');
+	ca.style.webkitAnimationPlayState = 'running';
+
+
+
 }
 
-setTimeout("enable()", 2000);
 
 
 </script>
 
+
+
 <!--start page with location form-->
-<div class='col-sm-8 col-sm-offset-2' onload="enable()">
+<div class='col-sm-8 col-sm-offset-2' onload="enable(); disable_ani();">
 <form method= 'get' action="/foo/">{% csrf_token %}
 		<input  id='latload'  type= 'number' step='any' value='0' name='latitude' style="display:none">
 		<input  id='lonload'  type= 'number' step='any' value='0' name='longitude' style="display:none">
+	
 
+
+	
 	<p id= 'walltext'>Here you can listen to the sounds in your area. To use your current location, click</p>
 
 	
-		<input  class="btn btn-success" type='submit' id='submit' value='here' style="color:#34373a; font-size: 25px; width: 100%;" disabled />
+		<input class="btn btn-success" type='submit' id='submit' value='here' style="color:#1d3b77; font-size: 25px; width: 100%;" disabled  onclick="enable_ani();" />
 </form></br></br>
+{% if user.is_authenticated %}
+
+{% else %}
+	<p id= 'walltext'>Please <a href="/accounts/login">login</a>/<a a href="/accounts/register">register</a> to rate and upload sounds.</p>
+{% endif %}
 
 <p id= 'nope'></p>
 
@@ -66,7 +116,26 @@ setTimeout("enable()", 2000);
   					<source src="{{obj.sound.url}}" type="audio/mpeg">
 					Your browser does not support the audio element.
 				</audio>
-				<p style="font-size: 9px">title:{{ obj.title }}</p>
+
+				{% if request.user.username == obj.usersave%}
+
+				<p style="font-size: 10px">title:<a href= '/{{obj.id}}/'>{{ obj.title }}</a></p>
+
+				{% else %}
+
+				<p style="font-size: 10px">title:{{ obj.title }}</p>
+				{% endif %}
+
+
+
+
+
+				
+
+
+
+
+
 				{% ratings obj 18 18 %}
 						
 			</div>

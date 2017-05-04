@@ -4,6 +4,129 @@
 
 <script type="text/javascript">
 getLocation()
+disable_aniboy()
+
+
+function disable_aniboy(){
+	var ye = document.getElementById('lastbolt');
+	ye.style.webkitAnimationPlayState = 'paused';
+	var y = document.getElementById('boltrow1');
+	y.style.webkitAnimationPlayState = 'running';
+	var yaa = document.getElementById('boltrow2');
+	yaa.style.webkitAnimationPlayState = 'paused';
+	var yb = document.getElementById('boltrow3');
+	yb.style.webkitAnimationPlayState = 'paused';
+
+	var yc = document.getElementById('boltrow4');
+	yc.style.webkitAnimationPlayState = 'paused';
+
+}
+
+//log
+
+
+function __log(e, data) {
+    log.innerHTML += "\n" + e + " " + (data || '');
+  }
+
+
+
+//soundboy_two JS file header validation
+
+function soundboy_two(){
+	// var filesize=document.getElementById('soundid').files[0].size;
+	var control = document.getElementById("soundid").files;
+	var xa = document.getElementById("allow");
+	var audtype = 'audio/mpeg'
+    // __log(filesize); 
+    if (control.size > 7418203) {
+    	xa.setAttribute("disabled", true);
+    	document.getElementById('update').innerHTML='Sound file too big. Make sure the file is less than 4 GB.'
+    }
+    // else if (control.type !== "audio/mpeg" ){
+    // 	xa.setAttribute("disabled", true);
+    // 	document.getElementById('update').innerHTML='Wrong file type. Make sure the file is mp3.'
+    // }
+
+    else{
+	   	xa.removeAttribute("disabled");
+    	document.getElementById('update').innerHTML=''
+    	for (var i = 0; i < control.length; i++) {
+        	console.log("Filename: " + control[i].name);
+        	console.log("Type: " + control[i].type);
+        	console.log("Size: " + control[i].size + " bytes");
+
+    }
+}
+}
+
+//xtra
+function get_header(){
+	var control = document.getElementById("soundid").files;
+	var xa = document.getElementById("allow");
+    for (var i = 0; i < control.length; i++) {
+        	console.log("Filename: " + control[i].name);
+        	console.log("Type: " + control[i].type);
+		    console.log("Size: " + control[i].size + " bytes");}
+
+
+
+	var files = control.files
+	var blob = files[i]; // See step 1 above
+	
+	var fileReader = new FileReader();
+	fileReader.onloadend = function(e) {
+  	var arr = (new Uint8Array(e.target.result)).subarray(0, 4);
+  	var header = "";
+  	for(var i = 0; i < arr.length; i++) {
+     header += arr[i].toString(16);
+  	}
+  	console.log(header);
+
+  // Check the file signature against known types
+};
+fileReader.readAsArrayBuffer(blob);
+
+
+switch (header) {
+    case "89504e47":
+        type = "image/png";
+        break;
+    case "47494638":
+        type = "image/gif";
+        break;
+    case "ffd8ffe0":
+    case "ffd8ffe1":
+    case "ffd8ffe2":
+        type = "image/jpeg";
+        break;
+    default:
+        type = "unknown"; // Or you can use the blob.type as fallback
+        break;
+}
+}
+
+
+//
+
+//soundboy
+
+
+// function soundboy(){
+// 	var filesize=document.getElementById('soundid').files[0].size;
+//     __log(filesize); 
+//     if (filesize > 7418203) {
+//     	document.getElementById('update').innerHTML='Sound file too big. Make sure the file is less than 4 GB.'
+//     }   
+//     else{
+//     	var xax = document.getElementById("allow");
+//     	xax.removeAttribute("disabled");
+//     }
+
+
+
+
+//get location
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -20,6 +143,9 @@ function showPosition(position) {
     document.getElementById('longitude').value = position.coords.latitude;
     
 }
+
+
+
 
 </script>
 
@@ -116,19 +242,28 @@ function showPosition(position) {
 
 <form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
 <!-- 	<button class="btn btn-success" onclick="getLocation()"  style="color:#34373a; font-size: 20px; width: 100%" >get coordinates</button></br></br> -->
-	<p id='update'></p>
+	<p id='update' style="color: #ff8370;"></p>
 	<!-- <p>latitude & longitude:</p> -->
 
 	<input  id='longitude'  type= 'number' step='any' value='0' name='latitude' style="display:none" required>
 	<input  id='latitude'  type= 'number' step='any' value='0' name='longitude' style="display:none" required>
 
+	
+	<input  id='usersave'  type= 'text' name='usersave' value='{{ request.user }}' style="display:none" required>
+
+
 	<p>title:</p>
 	{{form.title}}</br></br>
 	<p>upload:</p>
 	<!-- {{form.sound}}</br></br> -->
-	<input type="file"  name="sound" accept='audio/*' required></br></br>
-	<input class="btn btn-success" type= 'submit' style="color:#34373a; font-size: 25px; width: 100%" value="post sound" />
+	<input id= 'soundid' type="file"  name="sound" accept='audio/*' onchange="soundboy_two()"></br></br>
+	<input id= 'allow' class="btn btn-success" type= 'submit' style="color:#34373a; font-size: 25px; width: 100%" value="post sound" disabled />
 </form>
+
+
+
+  <p>Log</p>
+  <pre id="log"></pre> 
 
 <!-- AUDIO RECORD-->
 
