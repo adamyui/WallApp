@@ -30,7 +30,6 @@ def post_create(request):
 
 	if form.is_valid():
 
-		# handle_uploaded_file(request.FILES['sound'])
 		instance = form.save(commit=False)
 		instance.save()
 		messages.success(request, 'Successfully Created')
@@ -78,10 +77,6 @@ def post_delete(request, id=id):
 		messages.success(request, 'Success')
 	else:
 		raise PermissionDenied()
-	# instance.delete()
-	# messages.success(request, 'Success')
-	
-	# messages.success(request, 'Success')
 	return redirect('posts:list')
 
 def fetch_places(request):

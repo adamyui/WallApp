@@ -16,6 +16,7 @@ from constrainedfilefield.fields import ConstrainedFileField
 
 import magic
 
+from .validators import MimetypeValidator
 
 class Places(models.Model):
 
@@ -24,7 +25,7 @@ class Places(models.Model):
 	longitude= models.FloatField(null= True, blank=True,) 
 	location = models.PointField(null= True, srid=4326,default= Point(27,-38))
 	objects = models.GeoManager()
-	sound= ConstrainedFileField(max_upload_size= 4194304)
+	sound= ConstrainedFileField(max_upload_size= 4194304,)
 	prefered_radius = models.IntegerField(default=5, help_text="in kilometers")
 	rating= GenericRelation(Rating, related_query_name='foos')
 	usersave= models.CharField(max_length=100)

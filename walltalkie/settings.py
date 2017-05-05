@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'walltalkie.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': 'datacase',
+        'USER': 'adam',
+        'PASSWORD': 'dr0ngletr0n',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -138,7 +138,7 @@ STAR_RATINGS_RERATE = False
 STATIC_URL = '/static/'
 MEDIA_URL= '/media/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, '/home/adam/WallApp/WallApp/location/static/'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static_cdn')
