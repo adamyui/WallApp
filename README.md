@@ -16,13 +16,15 @@ Only mp3's under 4mb for uploads, please.
 ### Front end
 <i>Found in: WallApp/location/templates/location/wall.html</i>
 
-Luckily most popular browsers support the JavaScript function
+As far as the visual design, I tried to make it simple but got carried away with the CSS3 webkit animations. Sorry about that, animations are awesome.
+
+Luckily most popular browsers support the JavaScript geolocation function
 ```
 navigator.geolocation.getCurrentPosition()
 ```
-and that's pretty great news. There are some rules that might cause your browser to throw an error, including the fact that you cant request the users' location unless it's in a response to a users' action. Hence, the location on/off switch. I think it adds a little value for the users who like pressing buttons and switches (like me).
+which prompts the users' location, and that's pretty great news. There are some rules that might cause your browser to throw an error, including the fact that you cant request the users' location unless it's in a response to a users' action. Hence, the location on/off switch. I think it adds a little value for the users who like pressing buttons and switches (like me).
 
-As far as the visual design, I tried to make it simple but got carried away with the CSS3 webkit animations. Sorry about that, animations are awesome.
+From the browser, I pass the latitude and longitude through a hidden Django form, which in turn queries the view (shown in the views.py section)
 
 ### Form Validation
 <i>Found in: WallApp/location/forms.py</i>
@@ -66,7 +68,7 @@ def fetch_places_loc(request):
 ```
 
 
-I tried to list the most important bits of code that make this app work, but there are tons of other brain busting problems that I encountered that aren't listed here. Feel free to contact me with any questions, or if you're working on a similar app.
+I tried to list the most important bits of code that make this app work, but there are tons of other problems that I encountered that aren't listed here. Feel free to contact me with any questions, or if you're working on a similar app.
 
 ## Built With
 
