@@ -7,11 +7,11 @@ Walkie-Talk is a audio-sharing platform that allows you to listen to "sounds" po
 -Visit <a href="https://walkie-talk.com">walkie-talk.com</a>. You'll see a list of audio players with sounds from the default location (Athens, GA)</br>
 -Click the location on/off switch</br>
 -Click the "listen" button</br>
--listen to the sounds of your fellow humans</br>
+-Listen to the sounds of your fellow humans</br>
 
 ### Prerequisites
 
-So this is technically a prerequisite: only mp3's under 4mb for uploads, please.
+Only mp3's under 4mb for uploads, please.
 
 ### Front end
 <i>Found in: WallApp/location/templates/location/wall.html</i>
