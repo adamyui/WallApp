@@ -4,7 +4,7 @@ Walkie-Talk is a audio-sharing platform that allows you to listen to "sounds" po
 
 ## Getting Started
 
--Visit walkie-talk.com. You'll see a list of audio players with sounds from the default location (Athens, GA)</br>
+-Visit <a href="https://walkie-talk.com">walkie-talk.com</a>. You'll see a list of audio players with sounds from the default location (Athens, GA)</br>
 -Click the location on/off switch</br>
 -Click the "listen" button</br>
 -listen to the sounds of your fellow humans</br>
