@@ -19,7 +19,7 @@ Only mp3's under 4mb for uploads, please.
 As far as the visual design, I tried to keep it simple but <i>maybe</i> got carried away with the CSS3 webkit animations. Hope it's not distracting, I was just discovering how fun it is to animate svgs.
 
 
-## Getting the location from the browser
+#### Getting the location from the browser
 Luckily most popular browsers support the JavaScript geolocation function
 ```
 navigator.geolocation.getCurrentPosition()
