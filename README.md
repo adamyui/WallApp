@@ -74,24 +74,16 @@ I tried to list the most important bits of code that make this app work, but the
 
 ## Built With
 
-* Django
 * Python
 * postgreSQL
 * postGIS
 * JavaScript
-* HTML5
-* CSS3
 
-
-## Authors
-
-* **Adam Mizell**
 
 ## License
 
 This project is licensed under the MIT License 
 
-## Acknowledgments
- Thanks to all my music/web development world friends!
+
 
 
